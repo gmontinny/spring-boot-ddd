@@ -13,7 +13,8 @@ Este projeto é uma demonstração de uma API de E-commerce desenvolvida utiliza
 - **Lombok** (Redução de código boilerplate)
 - **SpringDoc OpenAPI** (Documentação Swagger)
 - **Docker & Docker Compose** (Containerização)
-- **Gradle** (Gerenciador de dependências)
+- **Gradle 9.3.0** (Gerenciador de dependências)
+- **Eclipse Temurin JDK 25** (Imagem Docker oficial)
 
 ## 🏗️ Arquitetura (DDD)
 
@@ -65,14 +66,17 @@ DB_PASSWORD=sua_senha
 A maneira mais fácil de subir o ambiente completo:
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
+
+> **Nota**: O comando `docker compose` (sem hífen) é a versão moderna. O projeto usa **Eclipse Temurin JDK 25** como imagem base, garantindo compatibilidade total com Java 25 e todas as ferramentas necessárias para o Gradle.
+
 A API estará disponível em `http://localhost:8080`.
 
 ### 4. Executando Localmente (Gradle)
 Se preferir rodar apenas o banco no Docker:
 
-1. Suba o banco: `docker-compose up -d postgres`
+1. Suba o banco: `docker compose up -d postgres`
 2. Execute: `./gradlew bootRun`
 
 ## 🛣️ Endpoints e Documentação
@@ -99,8 +103,8 @@ As migrações são aplicadas automaticamente pelo Spring Boot no startup (`src/
 ### Reset Completo do Banco
 Para limpar todos os dados e recriar as tabelas:
 ```bash
-docker-compose down -v
-docker-compose up --build
+docker compose down -v
+docker compose up --build
 ```
 
 ### Boas Práticas Aplicadas
